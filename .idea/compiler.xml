@@ -7,11 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jp.tamagotchi.soap.business" />
+        <module name="jp.tamagotchi.soap.common" />
+        <module name="jp.tamagotchi.soap.data" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jp.tamagotchi.soap" target="1.6" />
       <module name="jp.tamagotchi.soap.business" target="1.6" />
+      <module name="jp.tamagotchi.soap.common" target="1.6" />
+      <module name="jp.tamagotchi.soap.data" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
