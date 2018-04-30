@@ -4,6 +4,7 @@ import jp.tamagotchi.soap.country.Country
 import jp.tamagotchi.soap.country.Currency
 import jp.tamagotchi.soap.country.GetCountryRequest
 import jp.tamagotchi.soap.country.GetCountryResponse
+
 import org.springframework.ws.server.endpoint.annotation.Endpoint
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot
 import org.springframework.ws.server.endpoint.annotation.RequestPayload
@@ -21,7 +22,7 @@ class CountryEndpoint {
 
     @PayloadRoot(namespace = "http://tamagotchi.jp/soap/country", localPart = "getCountryRequest")
     @ResponsePayload
-    fun getCountry(@RequestPayload request: GetCountryRequest) : GetCountryResponse =
+    fun getCountry(@RequestPayload request: GetCountryRequest) =
             GetCountryResponse().apply {
                 country = Country().apply {
                     capital = "Mexico"
