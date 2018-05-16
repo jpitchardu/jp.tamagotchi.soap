@@ -1,6 +1,8 @@
 package jp.tamagotchi.soap.endpoints
 
+import jp.tamagotchi.soap.shared.client.UserServiceClient
 import jp.tamagotchi.soap.user.*
+import org.springframework.ws.server.endpoint.annotation.Endpoint
 
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot
 import org.springframework.ws.server.endpoint.annotation.RequestPayload
@@ -9,7 +11,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload
 /**
  * @author J. Pichardo
  */
-class UserEndpoint {
+@Endpoint
+class UserEndpoint(private val userServiceClient: UserServiceClient) {
 
     companion object {
         const val NAMESPACE_URI = "http://tamagotchi.jp/soap/user"

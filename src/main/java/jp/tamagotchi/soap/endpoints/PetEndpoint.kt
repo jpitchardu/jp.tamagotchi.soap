@@ -1,6 +1,7 @@
 package jp.tamagotchi.soap.endpoints
 
 import jp.tamagotchi.soap.pet.*
+import jp.tamagotchi.soap.shared.client.PetServiceClient
 
 import org.springframework.ws.server.endpoint.annotation.Endpoint
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot
@@ -11,7 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload
  * @author J. Pichardo
  */
 @Endpoint
-class PetEndpoint {
+class PetEndpoint(private val petServiceClient: PetServiceClient) {
 
     companion object {
         const val NAMESPACE_URI = "http://tamagotchi.jp/soap/pet"

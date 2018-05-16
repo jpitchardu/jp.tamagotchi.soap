@@ -1,6 +1,8 @@
 package jp.tamagotchi.soap.endpoints
 
+import jp.tamagotchi.soap.shared.client.TransactionServiceClient
 import jp.tamagotchi.soap.transaction.*
+import org.springframework.ws.server.endpoint.annotation.Endpoint
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot
 import org.springframework.ws.server.endpoint.annotation.RequestPayload
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload
@@ -8,7 +10,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload
 /**
  * @author J. Pichardo
  */
-class TransactionEndpoint {
+@Endpoint
+class TransactionEndpoint(private val transactionServiceClient: TransactionServiceClient) {
 
     companion object {
         const val NAMESPACE_URI = "http://tamagotchi.jp/soap/transaction"
