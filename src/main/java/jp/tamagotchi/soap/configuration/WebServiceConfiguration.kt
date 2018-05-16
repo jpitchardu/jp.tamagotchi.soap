@@ -1,6 +1,10 @@
+@file:Suppress("unused")
+
 package jp.tamagotchi.soap.configuration
 
-import jp.tamagotchi.soap.endpoints.CountryEndpoint
+import jp.tamagotchi.soap.endpoints.PetEndpoint
+import jp.tamagotchi.soap.endpoints.TransactionEndpoint
+import jp.tamagotchi.soap.endpoints.UserEndpoint
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean
 
@@ -39,19 +43,49 @@ open class WebServiceConfiguration : WsConfigurerAdapter() {
                 ServletRegistrationBean(this, "/ws/*")
             }
 
-    @Bean(name = ["countries"])
-    open fun defaultWsdl11Definition(countriesSchema: XsdSchema) =
+    //region Pets
+    @Bean(name = ["pets"])
+    open fun petsWsdl11Definition(petsSchema: XsdSchema) =
             DefaultWsdl11Definition().apply {
-                setPortTypeName("CountriesPort")
+                setPortTypeName("PetsPort")
                 setLocationUri("/ws")
-                setTargetNamespace(CountryEndpoint.NAMESPACE_URI)
-                setSchema(countriesSchema)
+                setTargetNamespace(PetEndpoint.NAMESPACE_URI)
+                setSchema(petsSchema)
             }
 
     @Bean
-    open fun countriesSchema(): XsdSchema = SimpleXsdSchema(ClassPathResource("countries.xsd"))
+    open fun petsSchema(): XsdSchema = SimpleXsdSchema(ClassPathResource("pets.xsd"))
+    //endregion
+
+    //region Transactions
+    @Bean(name = ["transactions"])
+    open fun transactionsWsdl11Definition(trasactionsSchema: XsdSchema) =
+            DefaultWsdl11Definition().apply {
+                setPortTypeName("TransactionsPort")
+                setLocationUri("/ws")
+                setTargetNamespace(TransactionEndpoint.NAMESPACE_URI)
+                setSchema(trasactionsSchema)
+            }
+
+    @Bean
+    open fun trasactionsSchema(): XsdSchema = SimpleXsdSchema(ClassPathResource("transaction/transactions.xsd"))
+    //endregion
+
+    //region Users
+    @Bean(name = ["users"])
+    open fun usersWsdl11Definition(usersSchema: XsdSchema) =
+            DefaultWsdl11Definition().apply {
+                setPortTypeName("UsersPort")
+                setLocationUri("/ws")
+                setTargetNamespace(UserEndpoint.NAMESPACE_URI)
+                setSchema(usersSchema)
+            }
+
+    @Bean
+    open fun usersSchema(): XsdSchema = SimpleXsdSchema(ClassPathResource("users.xsd"))
+    //endregion
 
     @Bean
     open fun messageEndpointAdapter(): EndpointAdapter = MessageEndpointAdapter()
-    
+
 }
