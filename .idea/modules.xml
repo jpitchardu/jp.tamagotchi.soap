@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/jp.tamagotchi.soap.iml" filepath="$PROJECT_DIR$/.idea/jp.tamagotchi.soap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jp.tamagotchi.soap_main.iml" filepath="$PROJECT_DIR$/.idea/modules/jp.tamagotchi.soap_main.iml" group="jp.tamagotchi.soap" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jp.tamagotchi.soap_test.iml" filepath="$PROJECT_DIR$/.idea/modules/jp.tamagotchi.soap_test.iml" group="jp.tamagotchi.soap" />
     </modules>
   </component>
 </project>

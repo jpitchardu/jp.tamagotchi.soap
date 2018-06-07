@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'io.jpichardo'
+version = '1.0-SNAPSHOT'
+
+description = """"""
+
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+        
+     maven { url "https://repo.spring.io/milestone" }
+     maven { url "https://repo.spring.io/snapshot" }
+     maven { url "https://dl.bintray.com/rabbitmq/maven-milestones" }
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.0.0.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web-services', version:'2.0.0.RELEASE'
+    compile group: 'wsdl4j', name: 'wsdl4j', version:'1.6.3'
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version:'1.2.31'
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version:'1.2.31'
+    compile group: 'javax.xml.soap', name: 'javax.xml.soap-api', version:'1.4.0'
+    compile group: 'com.sun.xml.messaging.saaj', name: 'saaj-impl', version:'1.4.0'
+    compile group: 'org.jdom', name: 'jdom', version:'2.0.2'
+    compile group: 'io.grpc', name: 'grpc-netty', version:'1.11.0'
+    compile group: 'io.grpc', name: 'grpc-protobuf', version:'1.11.0'
+    compile group: 'io.grpc', name: 'grpc-stub', version:'1.11.0'
+    testCompile group: 'org.jetbrains.kotlin', name: 'kotlin-test', version:'1.2.31'
+}

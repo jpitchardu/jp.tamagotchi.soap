@@ -1,23 +1,25 @@
 package jp.tamagotchi.soap.shared.client
 
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
 /**
  * @author J. Pichardo
  */
-class ClientsConfiguration {
+@Configuration
+open class ClientsConfiguration {
 
 
     @Bean
-    fun petServiceClient() = PetServiceClient("127.0.0.1", 0)
+    open fun petServiceClient(): PetServiceClient = PetServiceClient("127.0.0.1", 0)
 
     @Bean
-    fun petOwnershipServiceClient() = PetOwnershipServiceClient("127.0.0.1", 0)
+    open fun petOwnershipServiceClient(): PetOwnershipServiceClient = PetOwnershipServiceClient("127.0.0.1", 0)
 
     @Bean
-    fun userServiceClient() = UserServiceClient("127.0.0.1", 0)
+    open fun userServiceClient(): UserServiceClient = UserServiceClient("127.0.0.1", 0)
 
     @Bean
-    fun transactionServiceClient() = TransactionServiceClient("127.0.0.1", 0)
+    open fun transactionServiceClient(): TransactionServiceClient = TransactionServiceClient("127.0.0.1", 0)
 
 }

@@ -40,7 +40,7 @@ open class WebServiceConfiguration : WsConfigurerAdapter() {
             MessageDispatcherServlet().run {
                 setApplicationContext(applicationContext)
                 isTransformWsdlLocations = true
-                ServletRegistrationBean(this, "/ws/*")
+                ServletRegistrationBean(this, "/v1/pets/*", "/v1/users/*", "/v1/transactions/*")
             }
 
     //region Pets
@@ -48,7 +48,7 @@ open class WebServiceConfiguration : WsConfigurerAdapter() {
     open fun petsWsdl11Definition(petsSchema: XsdSchema) =
             DefaultWsdl11Definition().apply {
                 setPortTypeName("PetsPort")
-                setLocationUri("/ws")
+                setLocationUri("/v1/pets")
                 setTargetNamespace(PetEndpoint.NAMESPACE_URI)
                 setSchema(petsSchema)
             }
@@ -59,16 +59,16 @@ open class WebServiceConfiguration : WsConfigurerAdapter() {
 
     //region Transactions
     @Bean(name = ["transactions"])
-    open fun transactionsWsdl11Definition(trasactionsSchema: XsdSchema) =
+    open fun transactionsWsdl11Definition(transactionsSchema: XsdSchema) =
             DefaultWsdl11Definition().apply {
                 setPortTypeName("TransactionsPort")
-                setLocationUri("/ws")
+                setLocationUri("/v1/transactions")
                 setTargetNamespace(TransactionEndpoint.NAMESPACE_URI)
-                setSchema(trasactionsSchema)
+                setSchema(transactionsSchema)
             }
 
     @Bean
-    open fun trasactionsSchema(): XsdSchema = SimpleXsdSchema(ClassPathResource("transaction/transactions.xsd"))
+    open fun transactionsSchema(): XsdSchema = SimpleXsdSchema(ClassPathResource("transactions.xsd"))
     //endregion
 
     //region Users
@@ -76,7 +76,7 @@ open class WebServiceConfiguration : WsConfigurerAdapter() {
     open fun usersWsdl11Definition(usersSchema: XsdSchema) =
             DefaultWsdl11Definition().apply {
                 setPortTypeName("UsersPort")
-                setLocationUri("/ws")
+                setLocationUri("/v1/users")
                 setTargetNamespace(UserEndpoint.NAMESPACE_URI)
                 setSchema(usersSchema)
             }

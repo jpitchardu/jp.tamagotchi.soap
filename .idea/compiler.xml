@@ -11,6 +11,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jp.tamagotchi.soap" target="1.8" />
+      <module name="jp.tamagotchi.soap_main" target="1.5" />
+      <module name="jp.tamagotchi.soap_test" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
